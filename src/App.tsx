@@ -759,6 +759,8 @@ function App() {
                           window.location.href = "/migration-safari";
                         } else if (pkg.title === "Classic Kenya & Tanzania") {
                           window.location.href = "/classic-kenya-tanzania";
+                        } else if (pkg.title === "Private Luxury Safari") {
+                          window.location.href = "/private-luxury-safari";
                         } else if (pkg.title === "Group Safari Adventure") {
                           window.location.href = "/group-safari-adventure";
                         } else {
