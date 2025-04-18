@@ -77,12 +77,12 @@ function App() {
       highlights: ["Private guide", "Luxury lodges", "Helicopter tours", "Champagne sundowners"]
     },
     {
-      title: "Student Safari Package",
+      title: "4 Days Serengeti and Ngorongoro Mid-Range Safari",
       subtitle: "Educational Adventure",
       duration: "4 Days",
       price: "$1,999",
       image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1500&q=80",
-      description: "Budget-friendly options for student groups.",
+      description: "a 4 day exciting tour in the ranges of gngong and serengeti.",
       highlights: ["Educational talks", "Research activities", "Field studies", "Conservation projects"]
     },
     {
@@ -574,7 +574,7 @@ function App() {
                     initial={{ width: 0 }}
                     whileInView={{ width: '100%' }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 + index * 0.2 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
                   />
                 </div>
                 
@@ -763,6 +763,8 @@ function App() {
                           window.location.href = "/private-luxury-safari";
                         } else if (pkg.title === "Group Safari Adventure") {
                           window.location.href = "/group-safari-adventure";
+                        } else if (pkg.title === "4 Days Serengeti and Ngorongoro Mid-Range Safari") {
+                          window.location.href = "/serengeti-ngorongoro-safari";
                         } else {
                           handleBookNow(pkg.title);
                         }

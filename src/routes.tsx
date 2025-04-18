@@ -5,6 +5,7 @@ import MigrationSafari from './pages/MigrationSafari';
 import ClassicKenyaTanzania from './pages/ClassicKenyaTanzania';
 import PrivateLuxurySafari from './pages/PrivateLuxurySafari';
 import GroupSafariAdventure from './pages/GroupSafariAdventure';
+import SerengetiNgorongoroSafari from './pages/SerengetiNgorongoroSafari';
 
 export const router = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
   {
     path: '/group-safari-adventure',
     element: <GroupSafariAdventure />,
-  }
+  },
+  {
+    path: '/serengeti-ngorongoro-safari',
+    element: <SerengetiNgorongoroSafari />,
+  },
 ]);
