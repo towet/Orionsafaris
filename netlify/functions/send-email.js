@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 
-exports.handler = async (event, context) => {
+// Using CommonJS exports syntax
+module.exports.handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
