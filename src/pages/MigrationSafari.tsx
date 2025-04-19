@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { 
   Calendar, 
@@ -13,6 +13,7 @@ import {
   Star,
   Search as Binoculars
 } from 'lucide-react';
+import BookingModal from '../components/BookingModal';
 
 const MigrationSafari = () => {
   // Animation controls
@@ -168,6 +169,10 @@ const MigrationSafari = () => {
     }
   ];
 
+  // Booking modal state
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedSafariPackage, setSelectedSafariPackage] = useState('Great Migration Safari');
+
   return (
     <div className="min-h-screen bg-amber-50 overflow-hidden">
       {/* Scroll Progress Indicator */}
@@ -237,6 +242,10 @@ const MigrationSafari = () => {
                   className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedSafariPackage('Great Migration Safari');
+                    setIsBookingModalOpen(true);
+                  }}
                 >
                   <span>Book This Safari</span>
                   <ArrowRight className="w-5 h-5" />
@@ -542,6 +551,10 @@ const MigrationSafari = () => {
                 className="px-8 py-4 bg-white text-amber-900 rounded-full font-medium hover:bg-amber-100 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setSelectedSafariPackage('Great Migration Safari');
+                  setIsBookingModalOpen(true);
+                }}
               >
                 <span>Book Now</span>
                 <ArrowRight className="w-5 h-5" />
@@ -559,6 +572,13 @@ const MigrationSafari = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+        safariPackage={selectedSafariPackage} 
+      />
     </div>
   );
 };

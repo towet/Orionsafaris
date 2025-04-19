@@ -18,6 +18,7 @@ import {
   Mountain,
   Check
 } from 'lucide-react';
+import BookingModal from '../components/BookingModal';
 
 const GroupSafariAdventure = () => {
   // State for package selection
@@ -147,6 +148,10 @@ const GroupSafariAdventure = () => {
     }
   ];
 
+  // Booking modal state
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedSafariPackage, setSelectedSafariPackage] = useState('Group Safari Adventure');
+
   return (
     <div className="min-h-screen bg-amber-50 overflow-hidden">
       {/* Scroll Progress Indicator */}
@@ -221,6 +226,10 @@ const GroupSafariAdventure = () => {
                   className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedSafariPackage('Group Safari Adventure');
+                    setIsBookingModalOpen(true);
+                  }}
                 >
                   <span>Book This Safari</span>
                   <ArrowRight className="w-5 h-5" />
@@ -908,6 +917,10 @@ const GroupSafariAdventure = () => {
                 className="px-8 py-4 bg-white text-amber-900 rounded-full font-medium hover:bg-amber-100 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setSelectedSafariPackage('Group Safari Adventure');
+                  setIsBookingModalOpen(true);
+                }}
               >
                 <span>Book Now</span>
                 <ArrowRight className="w-5 h-5" />
@@ -925,6 +938,13 @@ const GroupSafariAdventure = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+        safariPackage={selectedSafariPackage} 
+      />
     </div>
   );
 };

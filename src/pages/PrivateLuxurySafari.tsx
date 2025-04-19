@@ -20,6 +20,7 @@ import {
   Sunset,
   Globe
 } from 'lucide-react';
+import BookingModal from '../components/BookingModal';
 
 const PrivateLuxurySafari = () => {
   // Animation controls
@@ -27,6 +28,8 @@ const PrivateLuxurySafari = () => {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
   const [activeTab, setActiveTab] = useState('maasai');
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedSafariPackage, setSelectedSafariPackage] = useState('Private Luxury Safari');
   
   useEffect(() => {
     if (isHeroInView) {
@@ -303,6 +306,10 @@ const PrivateLuxurySafari = () => {
                   className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedSafariPackage('Private Luxury Safari - Maasai Mara');
+                    setIsBookingModalOpen(true);
+                  }}
                 >
                   <span>Book Your Private Safari</span>
                   <ArrowRight className="w-5 h-5" />
@@ -516,6 +523,10 @@ const PrivateLuxurySafari = () => {
                     className="px-6 py-3 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      setSelectedSafariPackage('Private Luxury Safari - Maasai Mara');
+                      setIsBookingModalOpen(true);
+                    }}
                   >
                     <span>View Detailed Itinerary</span>
                     <ArrowRight className="w-5 h-5" />
@@ -589,6 +600,10 @@ const PrivateLuxurySafari = () => {
                     className="px-6 py-3 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      setSelectedSafariPackage('Private Luxury Safari - Amboseli');
+                      setIsBookingModalOpen(true);
+                    }}
                   >
                     <span>View Detailed Itinerary</span>
                     <ArrowRight className="w-5 h-5" />
@@ -936,6 +951,10 @@ const PrivateLuxurySafari = () => {
                 className="px-8 py-4 bg-white text-amber-900 rounded-full font-medium hover:bg-amber-100 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setSelectedSafariPackage('Private Luxury Safari');
+                  setIsBookingModalOpen(true);
+                }}
               >
                 <span>Book Your Safari</span>
                 <ArrowRight className="w-5 h-5" />
@@ -953,6 +972,13 @@ const PrivateLuxurySafari = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+        safariPackage={selectedSafariPackage} 
+      />
     </div>
   );
 };

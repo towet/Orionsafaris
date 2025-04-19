@@ -15,6 +15,7 @@ import ScrollIndicator from './components/ScrollIndicator';
 import ScrollToTop from './components/ScrollToTop';
 import MobileNav from './components/MobileNav';
 import ImagePreloader from './components/ImagePreloader';
+import BookingModal from './components/BookingModal';
 
 // Import animation utilities
 import { scrollToElement } from './utils/animations';
@@ -47,6 +48,10 @@ function App() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  
+  // Booking modal state
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedSafariPackage, setSelectedSafariPackage] = useState('');
   
   // Define data arrays first
   // Safari packages data
@@ -397,7 +402,10 @@ function App() {
                 className={`ml-4 px-5 py-2 rounded-full ${isScrolled ? 'bg-amber-600 text-white' : 'bg-white text-amber-600'} font-medium hover:bg-amber-700 hover:text-white transition-colors btn-pulse`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setShowBookingModal(true)}
+                onClick={() => {
+                  setSelectedSafariPackage('General Safari Booking');
+                  setIsBookingModalOpen(true);
+                }}
               >
                 Book Now
               </motion.button>
@@ -1214,7 +1222,7 @@ function App() {
                   <motion.li key={index} whileHover={{ x: 5 }}>
                     <a 
                       href={`#${link.toLowerCase().replace(' ', '-')}`}
-                      className="text-stone-400 hover:text-amber-500 transition-colors flex items-center"
+                      className="text-stone-500 hover:text-amber-500 transition-colors flex items-center"
                     >
                       <ChevronRight className="w-4 h-4 mr-1" />
                       {link}
@@ -1238,7 +1246,7 @@ function App() {
                   <motion.li key={index} whileHover={{ x: 5 }}>
                     <a 
                       href="#packages"
-                      className="text-stone-400 hover:text-amber-500 transition-colors flex items-center"
+                      className="text-stone-500 hover:text-amber-500 transition-colors flex items-center"
                       onClick={() => {
                         setSelectedPackage(pkg.title);
                       }}
@@ -1455,6 +1463,13 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+        safariPackage={selectedSafariPackage} 
+      />
     </div>
   );
 }

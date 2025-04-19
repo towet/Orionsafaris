@@ -22,6 +22,7 @@ import {
   Info,
   DollarSign
 } from 'lucide-react';
+import BookingModal from '../components/BookingModal';
 
 const ClassicKenyaTanzania = () => {
   // Animation controls
@@ -34,6 +35,10 @@ const ClassicKenyaTanzania = () => {
   const autoPlayRef = useRef<number | null>(null);
   const [activePricingTab, setActivePricingTab] = useState('low');
   
+  // Booking modal state
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedSafariPackage, setSelectedSafariPackage] = useState('');
+
   useEffect(() => {
     if (isHeroInView) {
       controls.start('visible');
@@ -1210,6 +1215,10 @@ const ClassicKenyaTanzania = () => {
                 className="w-full py-5 bg-gradient-to-r from-amber-700 to-amber-500 text-white rounded-xl font-medium shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 overflow-hidden relative group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  setSelectedSafariPackage('8 Days Kenya & Tanzania Classic Safari');
+                  setIsBookingModalOpen(true);
+                }}
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-600 to-amber-400 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
                 <span className="relative flex items-center text-lg font-semibold">
@@ -1227,6 +1236,17 @@ const ClassicKenyaTanzania = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Booking Modal */}
+      <AnimatePresence>
+        {isBookingModalOpen && (
+          <BookingModal 
+            isOpen={isBookingModalOpen} 
+            onClose={() => setIsBookingModalOpen(false)} 
+            safariPackage={selectedSafariPackage} 
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
