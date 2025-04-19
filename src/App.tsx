@@ -16,6 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 import MobileNav from './components/MobileNav';
 import ImagePreloader from './components/ImagePreloader';
 import BookingModal from './components/BookingModal';
+import FloatingChatButton from './components/FloatingChatButton';
 
 // Import animation utilities
 import { scrollToElement } from './utils/animations';
@@ -1470,6 +1471,9 @@ function App() {
         onClose={() => setIsBookingModalOpen(false)} 
         safariPackage={selectedSafariPackage} 
       />
+
+      {/* Floating Chat Button */}
+      <FloatingChatButton />
     </div>
   );
 }
