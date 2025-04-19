@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import { Compass, Option as Lion, Calendar, Users, ChevronRight, Menu, X, MapPin, Star, Camera, Coffee, Beef as Jeep, Binary as Binoculars, Phone, Mail, Clock, Send, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { Compass, Option as Lion, Calendar, Users, ChevronRight, Menu, X, MapPin, Star, Camera, Coffee, Beef as Jeep, Binary as Binoculars, Phone, Mail, Clock, Send, Facebook, Twitter, Instagram, Youtube, CheckCircle, AlertCircle } from 'lucide-react';
 import logo from './assets/logo.png';
 
 // Import custom components
@@ -32,8 +32,19 @@ function App() {
     phone: '',
     date: '',
     package: '',
+    subject: '',
     message: ''
   });
+  
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   
@@ -938,13 +949,42 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl font-serif font-bold text-stone-800 mb-6">Send Us a Message</h3>
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                setSubmitStatus('idle');
+                
+                try {
+                  const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(contactFormData),
+                  });
+                  
+                  if (response.ok) {
+                    setSubmitStatus('success');
+                    setContactFormData({ name: '', email: '', subject: '', message: '' });
+                  } else {
+                    setSubmitStatus('error');
+                  }
+                } catch (error) {
+                  console.error('Error submitting form:', error);
+                  setSubmitStatus('error');
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}>
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-1">Name</label>
                   <motion.input 
                     type="text" 
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
                     placeholder="Your full name"
+                    value={contactFormData.name}
+                    onChange={(e) => setContactFormData({...contactFormData, name: e.target.value})}
+                    required
                     whileFocus={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   />
@@ -955,6 +995,9 @@ function App() {
                     type="email" 
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
                     placeholder="your.email@example.com"
+                    value={contactFormData.email}
+                    onChange={(e) => setContactFormData({...contactFormData, email: e.target.value})}
+                    required
                     whileFocus={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   />
@@ -963,6 +1006,9 @@ function App() {
                   <label className="block text-sm font-medium text-stone-700 mb-1">Subject</label>
                   <motion.select 
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                    value={contactFormData.subject}
+                    onChange={(e) => setContactFormData({...contactFormData, subject: e.target.value})}
+                    required
                     whileFocus={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -979,20 +1025,51 @@ function App() {
                     rows={5} 
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
                     placeholder="How can we help you?"
+                    value={contactFormData.message}
+                    onChange={(e) => setContactFormData({...contactFormData, message: e.target.value})}
+                    required
                     whileFocus={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   ></motion.textarea>
                 </div>
                 <motion.button 
+                  type="submit"
                   className="bg-amber-600 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-700 transition-colors btn-pulse"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.03 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
                 >
                   <span className="flex items-center justify-center gap-2">
-                    Send Message
-                    <Send className="w-4 h-4" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? (
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
                   </span>
                 </motion.button>
+                
+                {submitStatus === 'success' && (
+                  <motion.div 
+                    className="mt-4 p-3 bg-green-50 text-green-700 rounded-lg flex items-center gap-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <span>Message sent successfully! We'll get back to you soon.</span>
+                  </motion.div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <motion.div 
+                    className="mt-4 p-3 bg-red-50 text-red-700 rounded-lg flex items-center gap-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <AlertCircle className="w-5 h-5 text-red-500" />
+                    <span>There was an error sending your message. Please try again.</span>
+                  </motion.div>
+                )}
               </form>
             </motion.div>
             
@@ -1046,8 +1123,7 @@ function App() {
                   </div>
                   <div>
                     <h4 className="font-medium text-stone-800 mb-1">Email</h4>
-                    <p className="text-stone-600">info@safariadventures.com</p>
-                    <p className="text-stone-600">bookings@safariadventures.com</p>
+                    <p className="text-stone-600">frankyfreaky103@gmail.com</p>
                   </div>
                 </motion.div>
                 

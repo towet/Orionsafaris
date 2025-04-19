@@ -19,7 +19,8 @@ import {
   Heart,
   Award,
   Check,
-  Info
+  Info,
+  DollarSign
 } from 'lucide-react';
 
 const ClassicKenyaTanzania = () => {
@@ -31,6 +32,7 @@ const ClassicKenyaTanzania = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAutoPlay] = useState(true); // Always on
   const autoPlayRef = useRef<number | null>(null);
+  const [activePricingTab, setActivePricingTab] = useState('low');
   
   useEffect(() => {
     if (isHeroInView) {
@@ -802,7 +804,7 @@ const ClassicKenyaTanzania = () => {
                 </div>
                 <div className="mt-6 md:mt-0 bg-white/20 backdrop-blur-sm px-6 py-4 rounded-xl">
                   <div className="text-5xl font-bold text-white">
-                    $3,499 
+                    $4,777 
                     <motion.span 
                       className="text-lg font-normal text-amber-100 block md:inline md:ml-2"
                       initial={{ opacity: 0 }}
@@ -899,6 +901,302 @@ const ClassicKenyaTanzania = () => {
                 </ul>
               </motion.div>
             </div>
+            
+            {/* 8 Days Kenya & Tanzania Classic Safari Pricing */}
+            <motion.div
+              className="mt-12 bg-white rounded-xl overflow-hidden shadow-lg border border-amber-100"
+              variants={fadeInUpVariants}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="bg-gradient-to-r from-amber-600 to-amber-500 px-8 py-6">
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-6 h-6 text-white" />
+                  <h3 className="text-2xl font-serif text-white">8 Days Kenya & Tanzania Classic Safari</h3>
+                </div>
+              </div>
+              
+              <div className="p-8">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+                  <div className="flex flex-wrap gap-4">
+                    <div className="flex items-center bg-amber-50 px-3 py-1.5 rounded-full">
+                      <Calendar className="w-4 h-4 text-amber-600 mr-1.5" />
+                      <span className="text-sm font-medium text-amber-800">8 Days</span>
+                    </div>
+                    <div className="flex items-center bg-amber-50 px-3 py-1.5 rounded-full">
+                      <MapPin className="w-4 h-4 text-amber-600 mr-1.5" />
+                      <span className="text-sm font-medium text-amber-800">Kenya & Tanzania</span>
+                    </div>
+                    <div className="flex items-center bg-amber-50 px-3 py-1.5 rounded-full">
+                      <Binoculars className="w-4 h-4 text-amber-600 mr-1.5" />
+                      <span className="text-sm font-medium text-amber-800">Classic Safari</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Pricing Tabs */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-xl font-medium text-stone-800">Pricing Options</h4>
+                    <div className="flex items-center gap-2">
+                      <DollarSign className="w-4 h-4 text-amber-600" />
+                      <span className="text-sm text-stone-600">USD</span>
+                    </div>
+                  </div>
+                  
+                  {/* Season Toggle */}
+                  <div className="bg-stone-100 p-1 rounded-full flex mb-8">
+                    <motion.button
+                      className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'low' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                      onClick={() => setActivePricingTab('low')}
+                      whileHover={activePricingTab !== 'low' ? { y: -1 } : {}}
+                      whileTap={activePricingTab !== 'low' ? { y: 0 } : {}}
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Sun className="w-4 h-4" />
+                        Low Season (Jan-Jun)
+                      </span>
+                    </motion.button>
+                    
+                    <motion.button
+                      className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'peak' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                      onClick={() => setActivePricingTab('peak')}
+                      whileHover={activePricingTab !== 'peak' ? { y: -1 } : {}}
+                      whileTap={activePricingTab !== 'peak' ? { y: 0 } : {}}
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Star className="w-4 h-4" />
+                        Peak Season (Jul-Dec)
+                      </span>
+                    </motion.button>
+                  </div>
+                  
+                  {/* Low Season Pricing Cards */}
+                  <AnimatePresence mode="wait">
+                    {activePricingTab === 'low' && (
+                      <motion.div 
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {/* 1 person */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">1 person</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$4,777</span>
+                            </div>
+                            <p className="text-xs text-stone-500">total package price</p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* 2-3 people */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">2-3 people</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$3,770</span>
+                              <span className="text-sm text-stone-600 mb-1">pp</span>
+                            </div>
+                            <p className="text-xs text-stone-500">per person</p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* 4-5 people */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">4-5 people</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$2,940</span>
+                              <span className="text-sm text-stone-600 mb-1">pp</span>
+                            </div>
+                            <p className="text-xs text-stone-500">per person</p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* 6 people */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">6 people</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$2,670</span>
+                              <span className="text-sm text-stone-600 mb-1">pp</span>
+                            </div>
+                            <p className="text-xs text-stone-500">per person</p>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                    
+                    {/* Peak Season Pricing Cards */}
+                    {activePricingTab === 'peak' && (
+                      <motion.div 
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {/* 1 person */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">1 person</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$4,976</span>
+                            </div>
+                            <p className="text-xs text-stone-500">total package price</p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* 2-3 people */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">2-3 people</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$4,220</span>
+                              <span className="text-sm text-stone-600 mb-1">pp</span>
+                            </div>
+                            <p className="text-xs text-stone-500">per person</p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* 4-5 people */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">4-5 people</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$3,340</span>
+                              <span className="text-sm text-stone-600 mb-1">pp</span>
+                            </div>
+                            <p className="text-xs text-stone-500">per person</p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* 6 people */}
+                        <motion.div 
+                          className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                        >
+                          <div className="bg-amber-50 p-4">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                  <Users className="w-4 h-4 text-amber-600" />
+                                </div>
+                                <span className="font-medium text-stone-700">6 people</span>
+                              </div>
+                              <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-end gap-1 mb-2">
+                              <span className="text-3xl font-bold text-amber-600">$3,050</span>
+                              <span className="text-sm text-stone-600 mb-1">pp</span>
+                            </div>
+                            <p className="text-xs text-stone-500">per person</p>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
             
             {/* CTA Button */}
             <motion.div 

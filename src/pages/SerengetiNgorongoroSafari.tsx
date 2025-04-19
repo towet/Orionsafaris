@@ -12,11 +12,14 @@ import {
   Mountain, 
   Leaf as Paw, 
   ChevronDown,
-  ArrowRight
+  ArrowRight,
+  Users,
+  DollarSign
 } from 'lucide-react';
 
 const SerengetiNgorongoroSafari = () => {
   const [activeDay, setActiveDay] = useState(1);
+  const [activeTab, setActiveTab] = useState('low');
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
   const y = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
@@ -659,6 +662,295 @@ const SerengetiNgorongoroSafari = () => {
                     <p className="text-white/80 text-sm">Memories to Last a Lifetime</p>
                   </div>
                 </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Additional Safari Packages Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-stone-100">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4">
+              More Safari Adventures
+            </h2>
+            <p className="text-lg text-stone-600 max-w-3xl mx-auto">
+              Explore our premium safari experiences tailored for the ultimate African adventure
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* 10 Days Maasai Mara-Serengeti & Zanzibar Luxury Fly-in Safari */}
+            <motion.div 
+              className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1500&q=80" 
+                  alt="Luxury Safari"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div className="p-6">
+                    <span className="px-3 py-1 bg-amber-500 text-white rounded-full text-xs font-medium">
+                      Luxury
+                    </span>
+                    <h3 className="text-2xl font-serif text-white mt-2">
+                      10 Days Maasai Mara-Serengeti & Zanzibar
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex flex-wrap gap-4 mb-6">
+                  <div className="flex items-center text-stone-600">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span className="text-sm">10 Days</span>
+                  </div>
+                  <div className="flex items-center text-stone-600">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span className="text-sm">Kenya, Tanzania & Zanzibar</span>
+                  </div>
+                  <div className="flex items-center text-stone-600">
+                    <Binoculars className="w-4 h-4 mr-1" />
+                    <span className="text-sm">Fly-in Safari</span>
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="text-lg font-medium text-stone-800 mb-3">Luxury Fly-in Experience</h4>
+                  <p className="text-stone-600">
+                    Experience the ultimate safari adventure with our 10-day luxury fly-in package, combining the iconic Maasai Mara and Serengeti with the tropical paradise of Zanzibar.
+                  </p>
+                </div>
+                
+                <motion.button
+                  className="w-full bg-amber-600 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Book This Safari
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
+              </div>
+            </motion.div>
+            
+            {/* 6 Nights Mara & Serengeti Wildebeest Migration Safari */}
+            <motion.div 
+              className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1500&q=80" 
+                  alt="Migration Safari"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div className="p-6">
+                    <span className="px-3 py-1 bg-amber-500 text-white rounded-full text-xs font-medium">
+                      Migration
+                    </span>
+                    <h3 className="text-2xl font-serif text-white mt-2">
+                      6 Nights Mara & Serengeti Wildebeest Migration
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex flex-wrap gap-4 mb-6">
+                  <div className="flex items-center text-stone-600">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span className="text-sm">7 Days</span>
+                  </div>
+                  <div className="flex items-center text-stone-600">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span className="text-sm">Maasai Mara & Serengeti</span>
+                  </div>
+                  <div className="flex items-center text-stone-600">
+                    <Paw className="w-4 h-4 mr-1" />
+                    <span className="text-sm">Wildebeest Migration</span>
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="text-lg font-medium text-stone-800 mb-3">Witness the Great Migration</h4>
+                  <p className="text-stone-600">
+                    Experience the breathtaking spectacle of the wildebeest migration across the Mara River and Serengeti plains on this 7-day adventure.
+                  </p>
+                </div>
+                
+                {/* Interactive Pricing Tabs */}
+                <div className="bg-stone-50 rounded-xl p-5 mb-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h4 className="text-lg font-medium text-stone-800">Pricing</h4>
+                    <div className="flex items-center gap-2">
+                      <DollarSign className="w-4 h-4 text-amber-600" />
+                      <span className="text-sm text-stone-600">USD</span>
+                    </div>
+                  </div>
+                  
+                  {/* Season Tabs */}
+                  <div className="mb-4">
+                    <div className="flex bg-stone-200 p-1 rounded-full">
+                      <motion.button
+                        className={`relative px-4 py-2 rounded-full text-sm font-medium flex-1 ${
+                          activeTab === 'low' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'
+                        }`}
+                        onClick={() => setActiveTab('low')}
+                        whileHover={{ y: -1 }}
+                        whileTap={{ y: 0 }}
+                      >
+                        Low Season (Jan-Jun)
+                      </motion.button>
+                      <motion.button
+                        className={`relative px-4 py-2 rounded-full text-sm font-medium flex-1 ${
+                          activeTab === 'peak' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'
+                        }`}
+                        onClick={() => setActiveTab('peak')}
+                        whileHover={{ y: -1 }}
+                        whileTap={{ y: 0 }}
+                      >
+                        Peak Season (Jul-Dec)
+                      </motion.button>
+                    </div>
+                  </div>
+                  
+                  {/* Low Season Pricing */}
+                  <motion.div 
+                    className={`grid grid-cols-2 md:grid-cols-4 gap-2 ${activeTab === 'low' ? 'block' : 'hidden'}`}
+                    initial={false}
+                    animate={{ opacity: activeTab === 'low' ? 1 : 0 }}
+                  >
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">1 person</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$4,216</p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">2-3 people</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$3,550</p>
+                      <p className="text-xs text-stone-500">per person</p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">4-5 people</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$2,860</p>
+                      <p className="text-xs text-stone-500">per person</p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">6 people</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$2,600</p>
+                      <p className="text-xs text-stone-500">per person</p>
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* Peak Season Pricing */}
+                  <motion.div 
+                    className={`grid grid-cols-2 md:grid-cols-4 gap-2 ${activeTab === 'peak' ? 'block' : 'hidden'}`}
+                    initial={false}
+                    animate={{ opacity: activeTab === 'peak' ? 1 : 0 }}
+                  >
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">1 person</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$4,584</p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">2-3 people</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$4,155</p>
+                      <p className="text-xs text-stone-500">per person</p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">4-5 people</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$3,420</p>
+                      <p className="text-xs text-stone-500">per person</p>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-white p-3 rounded-lg border border-amber-200 shadow-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1 mb-1">
+                        <Users className="w-3 h-3 text-amber-600" />
+                        <p className="text-xs font-medium text-stone-600">6 people</p>
+                      </div>
+                      <p className="text-lg font-bold text-amber-600">$3,140</p>
+                      <p className="text-xs text-stone-500">per person</p>
+                    </motion.div>
+                  </motion.div>
+                </div>
+                
+                <motion.button
+                  className="w-full bg-amber-600 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Book This Safari
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
               </div>
             </motion.div>
           </div>
