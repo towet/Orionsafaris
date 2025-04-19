@@ -18,6 +18,15 @@ import ImagePreloader from './components/ImagePreloader';
 import BookingModal from './components/BookingModal';
 import FloatingChatButton from './components/FloatingChatButton';
 
+// Import pages
+import HomePage from './pages/HomePage';
+import ClassicKenyaTanzania from './pages/ClassicKenyaTanzania';
+import SerengetiNgorongoroSafari from './pages/SerengetiNgorongoroSafari';
+import MigrationSafari from './pages/MigrationSafari';
+import GroupSafariAdventure from './pages/GroupSafariAdventure';
+import PrivateLuxurySafari from './pages/PrivateLuxurySafari';
+import DayTours from './pages/DayTours';
+
 // Import animation utilities
 import { scrollToElement } from './utils/animations';
 
@@ -785,6 +794,8 @@ function App() {
                           window.location.href = "/group-safari-adventure";
                         } else if (pkg.title === "4 Days Serengeti and Ngorongoro Mid-Range Safari") {
                           window.location.href = "/serengeti-ngorongoro-safari";
+                        } else if (pkg.title === "Day Tours") {
+                          window.location.href = "/day-tours";
                         } else {
                           handleBookNow(pkg.title);
                         }

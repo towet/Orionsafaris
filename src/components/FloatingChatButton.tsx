@@ -47,7 +47,7 @@ const FloatingChatButton: React.FC = () => {
           <div className="flex flex-col items-center gap-3 mb-3">
             {/* Phone */}
             <motion.a
-              href="tel:+254722123456"
+              href="tel:+254795704273"
               className="w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg hover:shadow-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const FloatingChatButton: React.FC = () => {
 
             {/* WhatsApp */}
             <motion.a
-              href="https://wa.me/254722123456?text=I'm%20interested%20in%20booking%20a%20safari"
+              href="https://wa.me/254795704273?text=I'm%20interested%20in%20booking%20a%20safari"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 rounded-full bg-green-400 text-white flex items-center justify-center shadow-lg hover:shadow-xl"
@@ -93,7 +93,7 @@ const FloatingChatButton: React.FC = () => {
 
             {/* Telegram */}
             <motion.a
-              href="https://t.me/orionsafaris"
+              href="https://t.me/Ryan"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center shadow-lg hover:shadow-xl"

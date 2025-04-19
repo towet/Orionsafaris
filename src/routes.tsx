@@ -6,6 +6,7 @@ import ClassicKenyaTanzania from './pages/ClassicKenyaTanzania';
 import PrivateLuxurySafari from './pages/PrivateLuxurySafari';
 import GroupSafariAdventure from './pages/GroupSafariAdventure';
 import SerengetiNgorongoroSafari from './pages/SerengetiNgorongoroSafari';
+import DayTours from './pages/DayTours';
 
 export const router = createBrowserRouter([
   {
@@ -35,5 +36,9 @@ export const router = createBrowserRouter([
   {
     path: '/serengeti-ngorongoro-safari',
     element: <SerengetiNgorongoroSafari />,
+  },
+  {
+    path: '/day-tours',
+    element: <DayTours />,
   },
 ]);
