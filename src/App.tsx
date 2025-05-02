@@ -24,8 +24,8 @@ import ClassicKenyaTanzania from './pages/ClassicKenyaTanzania';
 import SerengetiNgorongoroSafari from './pages/studentpackage';
 import MigrationSafari from './pages/MigrationSafari';
 import GroupSafariAdventure from './pages/GroupSafariAdventure';
-import PrivateLuxurySafari from './pages/PrivateLuxurySafari';
-import DayTours from './pages/DayTours';
+import PrivateLuxurySafariV2 from './pages/PrivateLuxurySafariV2';
+import DayToursV2 from './pages/DayToursV2';
 
 // Import animation utilities
 import { scrollToElement } from './utils/animations';

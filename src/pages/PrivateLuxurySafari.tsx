@@ -1,35 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import { 
   Calendar, 
   Camera, 
-  MapPin, 
-  Sunrise, 
-  Tent, 
-  Users, 
-  Compass, 
   ChevronRight,
   ArrowRight,
   Star,
-  Coffee,
   Search as Binoculars,
-  Heart,
-  Award,
-  Utensils,
-  Wifi,
-  Sunset,
-  Globe
+  MapPin, 
+  Sunrise, 
+  Tent, 
+  Users
 } from 'lucide-react';
 import BookingModal from '../components/BookingModal';
+import RequestItineraryModal from '../components/RequestItineraryModal';
 
-const PrivateLuxurySafari = () => {
+const MigrationSafari = () => {
   // Animation controls
   const controls = useAnimation();
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
-  const [activeTab, setActiveTab] = useState('maasai');
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  const [selectedSafariPackage, setSelectedSafariPackage] = useState('Private Luxury Safari');
+  
+  // State for season toggle
+  const [activePricingTab, setActivePricingTab] = useState('low');
   
   useEffect(() => {
     if (isHeroInView) {
@@ -94,7 +87,7 @@ const PrivateLuxurySafari = () => {
   };
 
   const fadeInUpVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
@@ -102,93 +95,16 @@ const PrivateLuxurySafari = () => {
     }
   };
 
-  const slideInRightVariants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
-  const slideInLeftVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
-  const scaleUpVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
-  // Safari itinerary data for Maasai Mara
-  const maasaiMaraItinerary = [
-    {
-      day: 1,
-      title: "Nairobi to Maasai Mara",
-      description: "After breakfast, depart from Nairobi and journey through the scenic Great Rift Valley to the renowned Maasai Mara National Reserve. Enjoy a game drive en route to your luxury camp.",
-      icon: Compass,
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80"
-    },
-    {
-      day: 2,
-      title: "Full Day in Maasai Mara",
-      description: "Spend a full day exploring the Maasai Mara with morning and afternoon game drives. Search for the Big Five and witness the incredible biodiversity of this world-famous reserve.",
-      icon: Binoculars,
-      image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80"
-    },
-    {
-      day: 3,
-      title: "Maasai Mara to Nairobi",
-      description: "After a final morning game drive and breakfast, depart for Nairobi, arriving in the late afternoon with memories to last a lifetime.",
-      icon: Camera,
-      image: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80"
-    }
-  ];
-
-  // Safari itinerary data for Amboseli
-  const amboseliItinerary = [
-    {
-      day: 1,
-      title: "Nairobi to Amboseli",
-      description: "Depart from Nairobi after breakfast and travel to Amboseli National Park, known for its spectacular views of Mount Kilimanjaro. Enjoy an afternoon game drive.",
-      icon: Compass,
-      image: "https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&q=80"
-    },
-    {
-      day: 2,
-      title: "Full Day in Amboseli",
-      description: "Spend a full day exploring Amboseli with morning and afternoon game drives. Look for the park's famous elephant herds against the backdrop of Africa's highest mountain.",
-      icon: Binoculars,
-      image: "https://images.unsplash.com/photo-1682686581362-796145f0e123?auto=format&fit=crop&q=80"
-    },
-    {
-      day: 3,
-      title: "Amboseli to Nairobi",
-      description: "After a final morning game drive and breakfast, return to Nairobi, arriving in the late afternoon with incredible memories and photographs.",
-      icon: Camera,
-      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80"
-    }
-  ];
-
   // Safari highlights
   const highlights = [
     {
-      title: "Private Safari Experience",
-      description: "Enjoy the exclusivity of a private safari vehicle and guide, allowing for a personalized and intimate wildlife experience.",
-      icon: Users
+      title: "Witness the Great Migration",
+      description: "Experience the awe-inspiring spectacle of over 1.5 million wildebeest, zebras, and gazelles traversing the vast plains.",
+      icon: Binoculars
     },
     {
-      title: "Luxury Accommodations",
-      description: "Stay in premium lodges and tented camps that blend authentic safari experience with modern comforts and amenities.",
+      title: "Luxury Camping",
+      description: "Stay in premium tented camps that blend authentic safari experience with modern comforts and amenities.",
       icon: Tent
     },
     {
@@ -197,45 +113,19 @@ const PrivateLuxurySafari = () => {
       icon: Camera
     },
     {
-      title: "Gourmet Dining",
-      description: "Indulge in exquisite cuisine prepared by private chefs using fresh, local ingredients.",
-      icon: Utensils
+      title: "Cultural Visits",
+      description: "Engage with local Maasai communities to learn about their traditions and way of life.",
+      icon: Users
     }
   ];
 
-  // Luxury amenities
-  const luxuryAmenities = [
-    {
-      title: "Private Butler Service",
-      description: "Dedicated butler to cater to your every need throughout your stay.",
-      icon: Coffee
-    },
-    {
-      title: "Spa Treatments",
-      description: "Rejuvenating spa treatments available in the comfort of your accommodation.",
-      icon: Heart
-    },
-    {
-      title: "Premium Wifi",
-      description: "Stay connected with high-speed internet access even in remote locations.",
-      icon: Wifi
-    },
-    {
-      title: "Sundowner Experiences",
-      description: "Exclusive sunset cocktails in breathtaking locations across the savannah.",
-      icon: Sunset
-    },
-    {
-      title: "Cultural Experiences",
-      description: "Private visits to authentic Maasai villages for cultural immersion.",
-      icon: Globe
-    },
-    {
-      title: "Award-Winning Guides",
-      description: "Expert guides with extensive knowledge of wildlife, ecology, and photography.",
-      icon: Award
-    }
-  ];
+  // Booking modal state
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedSafariPackage, setSelectedSafariPackage] = useState('Great Migration Safari');
+  
+  // Request itinerary modal state
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
+  const [requestPackageName, setRequestPackageName] = useState('');
 
   return (
     <div className="min-h-screen bg-amber-50 overflow-hidden">
@@ -247,8 +137,8 @@ const PrivateLuxurySafari = () => {
         <div className="absolute inset-0 z-0">
           <div className="parallax" data-speed="0.3">
             <img 
-              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80" 
-              alt="Private Luxury Safari" 
+              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80" 
+              alt="Great Migration" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -265,7 +155,7 @@ const PrivateLuxurySafari = () => {
           >
             <motion.div variants={itemVariants} className="mb-4">
               <span className="inline-block px-4 py-1 bg-amber-600 text-white rounded-full text-sm font-medium">
-                Exclusive Safari Experience
+                Ultimate Safari Experience
               </span>
             </motion.div>
             
@@ -273,30 +163,30 @@ const PrivateLuxurySafari = () => {
               variants={itemVariants} 
               className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6"
             >
-              Private Luxury Safari
+              The Great Migration Safari
             </motion.h1>
             
             <motion.p 
               variants={itemVariants}
               className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl"
             >
-              Experience the ultimate in safari luxury with our exclusive 3-day, 2-night private safaris to Kenya's most iconic wildlife destinations.
+              Experience the awe-inspiring spectacle of the Great Migration across the vast plains of Kenya's Maasai Mara and Tanzania's Serengeti.
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-12">
               <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Calendar className="w-5 h-5 text-amber-400" />
-                <span className="text-white">3 Days, 2 Nights</span>
+                <span className="text-white">6 Nights</span>
               </div>
               
               <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                 <MapPin className="w-5 h-5 text-amber-400" />
-                <span className="text-white">Maasai Mara & Amboseli</span>
+                <span className="text-white">Maasai Mara & Serengeti</span>
               </div>
               
               <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Star className="w-5 h-5 text-amber-400" />
-                <span className="text-white">5-Star Experience</span>
+                <span className="text-white">Premium Experience</span>
               </div>
             </motion.div>
             
@@ -307,11 +197,11 @@ const PrivateLuxurySafari = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    setSelectedSafariPackage('Private Luxury Safari - Maasai Mara');
+                    setSelectedSafariPackage('Great Migration Safari');
                     setIsBookingModalOpen(true);
                   }}
                 >
-                  <span>Book Your Private Safari</span>
+                  <span>Book This Safari</span>
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </div>
@@ -349,15 +239,15 @@ const PrivateLuxurySafari = () => {
               variants={itemVariants}
               className="text-3xl md:text-5xl font-serif font-bold text-amber-900 mb-6"
             >
-              Exclusive Private Safaris
-              <span className="block text-xl md:text-2xl text-amber-600 mt-2">Maasai Mara & Amboseli</span>
+              Maasai Mara & Serengeti
+              <span className="block text-xl md:text-2xl text-amber-600 mt-2">6-Night Migration Safari</span>
             </motion.h2>
             
             <motion.p 
               variants={itemVariants}
               className="text-lg text-black mb-8"
             >
-              Embark on an exclusive 3-day, 2-night private safari to Kenya's renowned wildlife destinations. Choose between the iconic Maasai Mara National Reserve or the majestic Amboseli National Park with Mount Kilimanjaro as your backdrop. These adventures offer intimate encounters with Africa's iconic wildlife, including the Big Five, amidst breathtaking landscapes.
+              Experience the awe-inspiring spectacle of the Great Migration, where over 1.5 million wildebeest, zebras, and gazelles traverse the vast plains of Kenya's Maasai Mara and Tanzania's Serengeti in search of greener pastures. This 6-night safari offers an unparalleled opportunity to witness nature's grandest theater, where survival and instinct drive the rhythm of life.
             </motion.p>
             
             <motion.div 
@@ -365,16 +255,16 @@ const PrivateLuxurySafari = () => {
               className="flex flex-wrap justify-center gap-4"
             >
               <span className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium">
-                Private safari vehicle
+                Witness wildebeest migration
               </span>
               <span className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium">
-                Luxury accommodations
+                Luxury camping
               </span>
               <span className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium">
-                Gourmet dining
+                Professional photography
               </span>
               <span className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium">
-                Cultural experiences
+                Cultural visits
               </span>
             </motion.div>
           </motion.div>
@@ -388,13 +278,13 @@ const PrivateLuxurySafari = () => {
           >
             <motion.div variants={fadeInUpVariants} className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80" 
-                alt="Luxury Safari Experience" 
+                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80" 
+                alt="Safari Experience" 
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
               <div className="absolute -bottom-6 -right-6 bg-amber-600 text-white px-6 py-4 rounded-xl shadow-lg">
-                <div className="text-2xl font-bold">$5,999</div>
-                <div className="text-sm">per person</div>
+                <div className="text-2xl font-bold"></div>
+                <div className="text-sm">Amazing safari</div>
               </div>
             </motion.div>
             
@@ -426,219 +316,7 @@ const PrivateLuxurySafari = () => {
         </div>
       </section>
       
-      {/* Destinations Tabs Section */}
-      <section className="py-20 bg-amber-50">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-          >
-            <motion.span 
-              variants={itemVariants}
-              className="px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-4 inline-block"
-            >
-              Choose Your Destination
-            </motion.span>
-            
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl md:text-5xl font-serif font-bold text-amber-900 mb-6"
-            >
-              Two Iconic Destinations
-            </motion.h2>
-            
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg text-black max-w-3xl mx-auto mb-12"
-            >
-              Select between two of Kenya's most magnificent safari destinations, each offering unique wildlife experiences and breathtaking landscapes.
-            </motion.p>
-            
-            <div className="flex justify-center mb-12">
-              <motion.div 
-                className="inline-flex bg-white rounded-full p-1 shadow-md"
-                variants={scaleUpVariants}
-              >
-                <button 
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${activeTab === 'maasai' ? 'bg-amber-600 text-white' : 'text-amber-900 hover:bg-amber-100'}`}
-                  onClick={() => setActiveTab('maasai')}
-                >
-                  Maasai Mara Safari
-                </button>
-                <button 
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${activeTab === 'amboseli' ? 'bg-amber-600 text-white' : 'text-amber-900 hover:bg-amber-100'}`}
-                  onClick={() => setActiveTab('amboseli')}
-                >
-                  Amboseli Safari
-                </button>
-              </motion.div>
-            </div>
-          </motion.div>
-          
-          <AnimatePresence mode="wait">
-            {activeTab === 'maasai' ? (
-              <motion.div
-                key="maasai"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-              >
-                <div>
-                  <h3 className="text-2xl font-serif font-bold text-amber-900 mb-4">Maasai Mara National Reserve</h3>
-                  <p className="text-black mb-6">
-                    Experience the iconic Maasai Mara, home to the Great Migration and the Big Five. This world-renowned reserve offers unparalleled wildlife viewing opportunities and stunning savannah landscapes.
-                  </p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Home to all of the Big Five</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Witness the Great Migration (seasonal)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Authentic Maasai cultural experiences</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Luxury tented camps and lodges</span>
-                    </li>
-                  </ul>
-                  <motion.button
-                    className="px-6 py-3 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      setSelectedSafariPackage('Private Luxury Safari - Maasai Mara');
-                      setIsBookingModalOpen(true);
-                    }}
-                  >
-                    <span>View Detailed Itinerary</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.button>
-                </div>
-                <div className="relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80" 
-                    alt="Maasai Mara" 
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl flex items-end">
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 text-white mb-2">
-                        <MapPin className="w-5 h-5" />
-                        <span className="font-medium">Maasai Mara, Kenya</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-amber-400">
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <span className="text-white ml-1">5.0</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="amboseli"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-              >
-                <div>
-                  <h3 className="text-2xl font-serif font-bold text-amber-900 mb-4">Amboseli National Park</h3>
-                  <p className="text-black mb-6">
-                    Discover Amboseli National Park, famous for its large elephant herds and stunning views of Mount Kilimanjaro. This park offers a unique safari experience with diverse ecosystems and abundant wildlife.
-                  </p>
-                  <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Spectacular views of Mount Kilimanjaro</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Famous for large elephant herds</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Diverse bird species in wetland areas</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </span>
-                      <span>Premium lodges with mountain views</span>
-                    </li>
-                  </ul>
-                  <motion.button
-                    className="px-6 py-3 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      setSelectedSafariPackage('Private Luxury Safari - Amboseli');
-                      setIsBookingModalOpen(true);
-                    }}
-                  >
-                    <span>View Detailed Itinerary</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.button>
-                </div>
-                <div className="relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1682686581362-796145f0e123?auto=format&fit=crop&q=80" 
-                    alt="Amboseli" 
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl flex items-end">
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 text-white mb-2">
-                        <MapPin className="w-5 h-5" />
-                        <span className="font-medium">Amboseli, Kenya</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-amber-400">
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <Star className="w-4 h-4 fill-current" />
-                        <span className="text-white ml-1">5.0</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
-      
-      {/* Itinerary Section */}
+      {/* Pricing Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div 
@@ -652,264 +330,329 @@ const PrivateLuxurySafari = () => {
               variants={itemVariants}
               className="px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-4 inline-block"
             >
-              Day by Day
+              Investment Details
             </motion.span>
             
             <motion.h2 
               variants={itemVariants}
               className="text-3xl md:text-5xl font-serif font-bold text-amber-900 mb-6"
             >
-              Safari Itinerary
+              Safari Pricing
             </motion.h2>
             
             <motion.p 
               variants={itemVariants}
               className="text-lg text-black max-w-3xl mx-auto"
             >
-              Experience the perfect blend of adventure and luxury with our carefully crafted itinerary.
+              Choose the perfect safari package for your group size and preferred travel season.
             </motion.p>
           </motion.div>
           
-          <div className="max-w-5xl mx-auto">
-            {(activeTab === 'maasai' ? maasaiMaraItinerary : amboseliItinerary).map((day, index) => (
-              <motion.div 
-                key={index}
-                className="relative"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={containerVariants}
-              >
-                {index < (activeTab === 'maasai' ? maasaiMaraItinerary : amboseliItinerary).length - 1 && (
-                  <div className="absolute left-6 top-16 bottom-0 w-0.5 bg-amber-200 z-0" />
+          {/* Pricing Cards */}
+          <motion.div
+            className="max-w-5xl mx-auto overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUpVariants}
+          >
+            {/* Header with safari name */}
+            <motion.div 
+              className="bg-gradient-to-r from-amber-800 to-amber-600 rounded-t-2xl p-8 md:p-12 relative overflow-hidden shadow-xl"
+              variants={fadeInUpVariants}
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-black/10 rounded-full -ml-10 -mb-10 blur-xl"></div>
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">6 Nights Mara & Serengeti</h2>
+                  <p className="text-amber-100">Wildebeest Migration Safari</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Pricing Section */}
+            <div className="bg-white rounded-b-2xl shadow-xl p-8 md:p-10">
+              {/* Season Tab Selector */}
+              <div className="mb-10">
+                <h3 className="text-xl font-medium text-stone-800 mb-4">Select Season</h3>
+                
+                <div className="bg-stone-100 p-1 rounded-full flex mb-8 max-w-md mx-auto">
+                  <motion.button
+                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'low' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ y: 0 }}
+                    onClick={() => setActivePricingTab('low')}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Sunrise className="w-4 h-4" />
+                      Low Season (Jan-Jun)
+                    </span>
+                  </motion.button>
+                  
+                  <motion.button
+                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'peak' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ y: 0 }}
+                    onClick={() => setActivePricingTab('peak')}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Star className="w-4 h-4" />
+                      Peak Season (Jul-Dec)
+                    </span>
+                  </motion.button>
+                </div>
+                
+                {/* Low Season Pricing */}
+                {activePricingTab === 'low' && (
+                  <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                    initial={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* 1 person */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">1 person</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$4,960</span>
+                        </div>
+                        <p className="text-xs text-stone-500">total package price</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 2-3 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">2-3 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$3,550</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 4-5 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">4-5 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$2,860</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 6 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">6 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$2,600</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 )}
                 
-                <motion.div 
-                  className="relative z-10 flex gap-6 mb-12"
-                  variants={fadeInUpVariants}
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-lg">
-                      {day.day}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden flex-grow hover:shadow-xl transition-shadow duration-300">
-                    <div className="md:flex">
-                      <div className="md:w-1/3 relative overflow-hidden">
-                        <motion.img 
-                          src={day.image} 
-                          alt={day.title} 
-                          className="w-full h-full object-cover md:h-64"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.5 }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                          <div className="p-4">
-                            <span className="text-white font-medium">Day {day.day} Highlight</span>
+                {/* Peak Season Pricing */}
+                {activePricingTab === 'peak' && (
+                  <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* 1 person */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">1 person</span>
                           </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
                         </div>
                       </div>
-                      
-                      <div className="p-6 md:w-2/3">
-                        <h3 className="text-xl font-serif font-bold text-amber-900 mb-2">
-                          {day.title}
-                        </h3>
-                        
-                        <p className="text-black mb-4">
-                          {day.description}
-                        </p>
-                        
-                        <div className="flex items-center gap-2 text-amber-600">
-                          <day.icon className="w-5 h-5" />
-                          <span className="font-medium">Day {day.day} Experience</span>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$5,730</span>
+                        </div>
+                        <p className="text-xs text-stone-500">total package price</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 2-3 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">2-3 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Luxury Amenities Section */}
-      <section className="py-20 bg-amber-50">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-          >
-            <motion.span 
-              variants={itemVariants}
-              className="px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-4 inline-block"
-            >
-              Exclusive Benefits
-            </motion.span>
-            
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl md:text-5xl font-serif font-bold text-amber-900 mb-6"
-            >
-              Luxury Amenities
-            </motion.h2>
-            
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg text-black max-w-3xl mx-auto"
-            >
-              Indulge in premium services and amenities designed to elevate your safari experience to unprecedented levels of comfort and luxury.
-            </motion.p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={containerVariants}
-          >
-            {luxuryAmenities.map((amenity, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                variants={scaleUpVariants}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center mb-6 mx-auto">
-                  <amenity.icon className="w-8 h-8 text-amber-600" />
-                </div>
-                <h3 className="text-xl font-bold text-amber-900 mb-3 text-center">{amenity.title}</h3>
-                <p className="text-black text-center">{amenity.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-          >
-            <motion.span 
-              variants={itemVariants}
-              className="px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-4 inline-block"
-            >
-              Guest Experiences
-            </motion.span>
-            
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl md:text-5xl font-serif font-bold text-amber-900 mb-6"
-            >
-              What Our Guests Say
-            </motion.h2>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={containerVariants}
-          >
-            <motion.div 
-              className="bg-white rounded-2xl p-8 shadow-lg border border-amber-100 relative"
-              variants={fadeInUpVariants}
-              whileHover={{ y: -10 }}
-            >
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-2xl">&ldquo;</span>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$4,155</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 4-5 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">4-5 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$3,420</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 6 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">6 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$3,140</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
               </div>
-              <div className="pt-4">
-                <p className="text-black mb-6 italic">"Our private safari exceeded all expectations. The attention to detail, from our knowledgeable guide to the luxurious accommodations, made this trip truly unforgettable."</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Sarah Johnson" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-amber-900">Sarah Johnson</h4>
-                    <p className="text-sm text-black">New York, USA</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 mt-4 text-amber-400">
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
+              
+              {/* Book Now Button */}
+              <div className="mt-10 text-center">
+                <motion.button
+                  className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setSelectedSafariPackage('Great Migration Safari');
+                    setIsBookingModalOpen(true);
+                  }}
+                >
+                  <span>Book This Safari Now</span>
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+                
+                <div className="relative">
+                  <motion.button
+                    className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      setRequestPackageName('Great Migration Safari');
+                      setIsRequestModalOpen(true);
+                    }}
+                  >
+                    <span>Request Itinerary</span>
+                    <ChevronRight className="w-5 h-5" />
+                  </motion.button>
                 </div>
               </div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-white rounded-2xl p-8 shadow-lg border border-amber-100 relative"
-              variants={fadeInUpVariants}
-              whileHover={{ y: -10 }}
-            >
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-2xl">&ldquo;</span>
-              </div>
-              <div className="pt-4">
-                <p className="text-black mb-6 italic">"The private safari to Amboseli was magical. Watching elephants with Kilimanjaro in the background while sipping champagne is an experience I'll cherish forever."</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="David Chen" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-amber-900">David Chen</h4>
-                    <p className="text-sm text-black">Singapore</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 mt-4 text-amber-400">
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-white rounded-2xl p-8 shadow-lg border border-amber-100 relative"
-              variants={fadeInUpVariants}
-              whileHover={{ y: -10 }}
-            >
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-2xl">&ldquo;</span>
-              </div>
-              <div className="pt-4">
-                <p className="text-black mb-6 italic">"The private butler service and gourmet dining in the middle of the Maasai Mara was beyond anything I could have imagined. A perfect blend of wilderness and luxury."</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=500&q=80" alt="Emma Thompson" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-amber-900">Emma Thompson</h4>
-                    <p className="text-sm text-black">London, UK</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 mt-4 text-amber-400">
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                </div>
-              </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -918,7 +661,7 @@ const PrivateLuxurySafari = () => {
       <section className="py-20 bg-amber-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80" 
             alt="Safari Background" 
             className="w-full h-full object-cover"
           />
@@ -936,14 +679,14 @@ const PrivateLuxurySafari = () => {
               variants={itemVariants}
               className="text-3xl md:text-5xl font-serif font-bold text-white mb-6"
             >
-              Ready for Your Luxury Safari Adventure?
+              Ready to Witness the Great Migration?
             </motion.h2>
             
             <motion.p 
               variants={itemVariants}
               className="text-xl text-white/90 mb-10"
             >
-              Book your private safari experience today and discover the perfect blend of adventure and luxury in Africa's most iconic wildlife destinations.
+              Book your safari adventure today and experience the wonder of Africa's most spectacular wildlife event.
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4">
@@ -952,22 +695,28 @@ const PrivateLuxurySafari = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  setSelectedSafariPackage('Private Luxury Safari');
+                  setSelectedSafariPackage('Great Migration Safari');
                   setIsBookingModalOpen(true);
                 }}
               >
-                <span>Book Your Safari</span>
+                <span>Book Now</span>
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
               
-              <motion.button
-                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Download Brochure</span>
-                <ChevronRight className="w-5 h-5" />
-              </motion.button>
+              <div className="relative">
+                <motion.button
+                  className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setRequestPackageName('Great Migration Safari');
+                    setIsRequestModalOpen(true);
+                  }}
+                >
+                  <span>Request Itinerary</span>
+                  <ChevronRight className="w-5 h-5" />
+                </motion.button>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -979,8 +728,15 @@ const PrivateLuxurySafari = () => {
         onClose={() => setIsBookingModalOpen(false)} 
         safariPackage={selectedSafariPackage} 
       />
+      
+      {/* Request Itinerary Modal */}
+      <RequestItineraryModal 
+        isOpen={isRequestModalOpen} 
+        onClose={() => setIsRequestModalOpen(false)} 
+        packageName={requestPackageName} 
+      />
     </div>
   );
 };
 
-export default PrivateLuxurySafari;
+export default MigrationSafari;
