@@ -142,8 +142,8 @@ const MigrationSafari = () => {
         <div className="absolute inset-0 z-0">
           <div className="parallax" data-speed="0.3">
             <img 
-              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80" 
-              alt="Great Migration" 
+              src="https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&q=80" 
+              alt="Classic Kenya & Tanzania" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -357,6 +357,130 @@ const MigrationSafari = () => {
           
           {/* Pricing Cards */}
           <motion.div
+            className="max-w-5xl mx-auto overflow-hidden mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUpVariants}
+          >
+            {/* Header with safari name */}
+            <motion.div 
+              className="bg-gradient-to-r from-amber-800 to-amber-600 rounded-t-2xl p-8 md:p-12 relative overflow-hidden shadow-xl"
+              variants={fadeInUpVariants}
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-black/10 rounded-full -ml-10 -mb-10 blur-xl"></div>
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">10 days Masai Mara & zanzibar fly in safari</h2>
+                  <p className="text-amber-100">Experience the ultimate luxury safari across two iconic destinations</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Pricing Section */}
+            <div className="bg-white rounded-b-2xl shadow-xl p-8 md:p-10">
+              {/* Season Tab Selector */}
+              <div className="mb-10">
+                <h3 className="text-xl font-medium text-stone-800 mb-4">Select Season</h3>
+                
+                <div className="bg-stone-100 p-1 rounded-full flex mb-8 max-w-md mx-auto">
+                  <motion.button
+                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'low' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ y: 0 }}
+                    onClick={() => setActivePricingTab('low')}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Sunrise className="w-4 h-4" />
+                      Low Season (Jan-Jun)
+                    </span>
+                  </motion.button>
+                  
+                  <motion.button
+                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'peak' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ y: 0 }}
+                    onClick={() => setActivePricingTab('peak')}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Star className="w-4 h-4" />
+                      Peak Season (Jul-Dec)
+                    </span>
+                  </motion.button>
+                </div>
+                
+                {/* Low Season Pricing */}
+                {activePricingTab === 'low' && (
+                  <motion.div 
+                    className="flex justify-center"
+                    initial={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow max-w-md"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">Low Season (15%)</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Luxury</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$8,550</span>
+                        </div>
+                        <p className="text-xs text-stone-500">total package price</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
+                
+                {/* Peak Season Pricing */}
+                {activePricingTab === 'peak' && (
+                  <motion.div 
+                    className="flex justify-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow max-w-md"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">Peak Season (20%)</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Luxury</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$8,550</span>
+                        </div>
+                        <p className="text-xs text-stone-500">total package price</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* 8 Days Kenya & Tanzania Classic Safari */}
+          <motion.div
             className="max-w-5xl mx-auto overflow-hidden"
             initial="hidden"
             whileInView="visible"
@@ -373,8 +497,8 @@ const MigrationSafari = () => {
               
               <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">10 days masai serengeti & zanzibar luxury fly in safari </h2>
-                  <p className="text-amber-100"></p>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">8 Days Kenya & Tanzania Classic Safari</h2>
+                  <p className="text-amber-100">Experience the best of East Africa's wildlife and landscapes</p>
                 </div>
               </div>
             </motion.div>
@@ -436,7 +560,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$4,960</span>
+                          <span className="text-3xl font-bold text-amber-600">$5,620</span>
                         </div>
                         <p className="text-xs text-stone-500">total package price</p>
                       </div>
@@ -460,7 +584,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,550</span>
+                          <span className="text-3xl font-bold text-amber-600">$3,770</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -485,7 +609,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$2,860</span>
+                          <span className="text-3xl font-bold text-amber-600">$2,940</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -510,7 +634,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$2,600</span>
+                          <span className="text-3xl font-bold text-amber-600">$2,670</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -545,7 +669,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$5,730</span>
+                          <span className="text-3xl font-bold text-amber-600">$6,220</span>
                         </div>
                         <p className="text-xs text-stone-500">total package price</p>
                       </div>
@@ -569,7 +693,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$4,155</span>
+                          <span className="text-3xl font-bold text-amber-600">$4,220</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -594,7 +718,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,420</span>
+                          <span className="text-3xl font-bold text-amber-600">$3,340</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -619,7 +743,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,140</span>
+                          <span className="text-3xl font-bold text-amber-600">$3,050</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -629,32 +753,35 @@ const MigrationSafari = () => {
                 )}
               </div>
               
-              {/* Book Now Button */}
-              <div className="mt-10 text-center">
-                <motion.button
-                  className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setSelectedSafariPackage('Great Migration Safari');
-                    setIsBookingModalOpen(true);
-                  }}
-                >
-                  <span>Book This Safari Now</span>
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+              <div className="text-center mt-6">
+                <p className="text-sm text-stone-600 max-w-3xl mx-auto">
+                  All prices are in USD. Prices may vary based on exact travel dates, group size, and customizations. Contact us for a detailed quote.
+                </p>
                 
-                <div className="relative">
+                <div className="mt-8 flex flex-wrap gap-4 justify-center">
                   <motion.button
-                    className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="px-6 py-3 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-md hover:shadow-lg flex items-center gap-2"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => {
-                      setRequestPackageName('Great Migration Safari');
+                      setSelectedSafariPackage('Classic Kenya & Tanzania Safari');
+                      setIsBookingModalOpen(true);
+                    }}
+                  >
+                    <span>Book This Safari</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+                  
+                  <motion.button
+                    className="px-6 py-3 border border-amber-600 text-amber-600 rounded-full font-medium hover:bg-amber-50 transition-colors shadow-md hover:shadow-lg flex items-center gap-2"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      setRequestPackageName('Classic Kenya & Tanzania Safari');
                       setIsRequestModalOpen(true);
                     }}
                   >
-                    <span>Request Itinerary</span>
+                    <span>Request Detailed Itinerary</span>
                     <ChevronRight className="w-5 h-5" />
                   </motion.button>
                 </div>

@@ -8,7 +8,6 @@ import {
   Star,
   Search as Binoculars,
   MapPin, 
-  Sunrise, 
   Tent, 
   Users
 } from 'lucide-react';
@@ -20,9 +19,6 @@ const MigrationSafari = () => {
   const controls = useAnimation();
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
-  
-  // State for season toggle
-  const [activePricingTab, setActivePricingTab] = useState('low');
   
   useEffect(() => {
     if (isHeroInView) {
@@ -137,8 +133,8 @@ const MigrationSafari = () => {
         <div className="absolute inset-0 z-0">
           <div className="parallax" data-speed="0.3">
             <img 
-              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80" 
-              alt="Great Migration" 
+              src="https://images.unsplash.com/photo-1682686581362-796145f0e123?auto=format&fit=crop&w=1500&q=80" 
+              alt="Student Package" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -366,291 +362,156 @@ const MigrationSafari = () => {
               
               <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">Day Student Discovery Safari</h2>
-                  <p className="text-amber-100">student safari</p>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">Student Safari Packages</h2>
+                  <p className="text-amber-100">Affordable educational safari experiences for students</p>
                 </div>
               </div>
             </motion.div>
             
             {/* Pricing Section */}
             <div className="bg-white rounded-b-2xl shadow-xl p-8 md:p-10">
-              {/* Season Tab Selector */}
               <div className="mb-10">
-                <h3 className="text-xl font-medium text-stone-800 mb-4">Select Season</h3>
+                <h3 className="text-xl font-medium text-stone-800 mb-6 text-center">Select Your Student Package</h3>
                 
-                <div className="bg-stone-100 p-1 rounded-full flex mb-8 max-w-md mx-auto">
-                  <motion.button
-                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'low' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
-                    whileHover={{ y: -1 }}
-                    whileTap={{ y: 0 }}
-                    onClick={() => setActivePricingTab('low')}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {/* 2 Days Nairobi National Park & Giraffe Center */}
+                  <motion.div 
+                    className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                    whileHover={{ y: -5, scale: 1.02 }}
                   >
-                    <span className="flex items-center justify-center gap-2">
-                      <Sunrise className="w-4 h-4" />
-                      Low Season (Jan-Jun)
-                    </span>
-                  </motion.button>
+                    <div className="bg-amber-50 p-4">
+                      <div className="flex flex-col items-start">
+                        <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mb-2">
+                          <Calendar className="w-4 h-4 text-amber-600" />
+                        </div>
+                        <h4 className="font-medium text-stone-800 text-lg">2 Days Nairobi National Park & Giraffe Center</h4>
+                      </div>
+                    </div>
+                    <div className="p-4 flex flex-col items-center">
+                      <div className="flex items-end gap-1 mb-3">
+                        <span className="text-3xl font-bold text-amber-600">$250</span>
+                      </div>
+                      <motion.button
+                        className="px-4 py-2 bg-amber-600 text-white rounded-full text-sm font-medium hover:bg-amber-700 transition-colors flex items-center gap-1 w-full justify-center"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedSafariPackage('2 Days Nairobi National Park & Giraffe Center');
+                          setIsBookingModalOpen(true);
+                        }}
+                      >
+                        Book Now <ChevronRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+                  </motion.div>
                   
-                  <motion.button
-                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'peak' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
-                    whileHover={{ y: -1 }}
-                    whileTap={{ y: 0 }}
-                    onClick={() => setActivePricingTab('peak')}
+                  {/* 3 Days Maasai Mara Budget Safari */}
+                  <motion.div 
+                    className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                    whileHover={{ y: -5, scale: 1.02 }}
                   >
-                    <span className="flex items-center justify-center gap-2">
-                      <Star className="w-4 h-4" />
-                      Peak Season (Jul-Dec)
-                    </span>
-                  </motion.button>
+                    <div className="bg-amber-50 p-4">
+                      <div className="flex flex-col items-start">
+                        <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mb-2">
+                          <Calendar className="w-4 h-4 text-amber-600" />
+                        </div>
+                        <h4 className="font-medium text-stone-800 text-lg">3 Days Maasai Mara Budget Safari</h4>
+                      </div>
+                    </div>
+                    <div className="p-4 flex flex-col items-center">
+                      <div className="flex items-end gap-1 mb-3">
+                        <span className="text-3xl font-bold text-amber-600">$450</span>
+                      </div>
+                      <motion.button
+                        className="px-4 py-2 bg-amber-600 text-white rounded-full text-sm font-medium hover:bg-amber-700 transition-colors flex items-center gap-1 w-full justify-center"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedSafariPackage('3 Days Maasai Mara Budget Safari');
+                          setIsBookingModalOpen(true);
+                        }}
+                      >
+                        Book Now <ChevronRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                  
+                  {/* 4 Days Amboseli & Tsavo Safari */}
+                  <motion.div 
+                    className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <div className="bg-amber-50 p-4">
+                      <div className="flex flex-col items-start">
+                        <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mb-2">
+                          <Calendar className="w-4 h-4 text-amber-600" />
+                        </div>
+                        <h4 className="font-medium text-stone-800 text-lg">4 Days Amboseli & Tsavo Safari</h4>
+                      </div>
+                    </div>
+                    <div className="p-4 flex flex-col items-center">
+                      <div className="flex items-end gap-1 mb-3">
+                        <span className="text-3xl font-bold text-amber-600">$650</span>
+                      </div>
+                      <motion.button
+                        className="px-4 py-2 bg-amber-600 text-white rounded-full text-sm font-medium hover:bg-amber-700 transition-colors flex items-center gap-1 w-full justify-center"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedSafariPackage('4 Days Amboseli & Tsavo Safari');
+                          setIsBookingModalOpen(true);
+                        }}
+                      >
+                        Book Now <ChevronRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                  
+                  {/* 5 Days Lake Nakuru, Maasai Mara & Naivasha */}
+                  <motion.div 
+                    className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <div className="bg-amber-50 p-4">
+                      <div className="flex flex-col items-start">
+                        <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mb-2">
+                          <Calendar className="w-4 h-4 text-amber-600" />
+                        </div>
+                        <h4 className="font-medium text-stone-800 text-lg">5 Days Lake Nakuru, Maasai Mara & Naivasha</h4>
+                      </div>
+                    </div>
+                    <div className="p-4 flex flex-col items-center">
+                      <div className="flex items-end gap-1 mb-3">
+                        <span className="text-3xl font-bold text-amber-600">$750</span>
+                      </div>
+                      <motion.button
+                        className="px-4 py-2 bg-amber-600 text-white rounded-full text-sm font-medium hover:bg-amber-700 transition-colors flex items-center gap-1 w-full justify-center"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setSelectedSafariPackage('5 Days Lake Nakuru, Maasai Mara & Naivasha');
+                          setIsBookingModalOpen(true);
+                        }}
+                      >
+                        Book Now <ChevronRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+                  </motion.div>
                 </div>
-                
-                {/* Low Season Pricing */}
-                {activePricingTab === 'low' && (
-                  <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-                    initial={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {/* 1 person */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">1 person</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$4,960</span>
-                        </div>
-                        <p className="text-xs text-stone-500">total package price</p>
-                      </div>
-                    </motion.div>
-                    
-                    {/* 2-3 people */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">2-3 people</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,550</span>
-                          <span className="text-sm text-stone-600 mb-1">pp</span>
-                        </div>
-                        <p className="text-xs text-stone-500">per person</p>
-                      </div>
-                    </motion.div>
-                    
-                    {/* 4-5 people */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">4-5 people</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$2,860</span>
-                          <span className="text-sm text-stone-600 mb-1">pp</span>
-                        </div>
-                        <p className="text-xs text-stone-500">per person</p>
-                      </div>
-                    </motion.div>
-                    
-                    {/* 6 people */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">6 people</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$2,600</span>
-                          <span className="text-sm text-stone-600 mb-1">pp</span>
-                        </div>
-                        <p className="text-xs text-stone-500">per person</p>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                )}
-                
-                {/* Peak Season Pricing */}
-                {activePricingTab === 'peak' && (
-                  <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {/* 1 person */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">1 person</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$5,730</span>
-                        </div>
-                        <p className="text-xs text-stone-500">total package price</p>
-                      </div>
-                    </motion.div>
-                    
-                    {/* 2-3 people */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">2-3 people</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$4,155</span>
-                          <span className="text-sm text-stone-600 mb-1">pp</span>
-                        </div>
-                        <p className="text-xs text-stone-500">per person</p>
-                      </div>
-                    </motion.div>
-                    
-                    {/* 4-5 people */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">4-5 people</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,420</span>
-                          <span className="text-sm text-stone-600 mb-1">pp</span>
-                        </div>
-                        <p className="text-xs text-stone-500">per person</p>
-                      </div>
-                    </motion.div>
-                    
-                    {/* 6 people */}
-                    <motion.div 
-                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                      whileHover={{ y: -5, scale: 1.02 }}
-                    >
-                      <div className="bg-amber-50 p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                              <Users className="w-4 h-4 text-amber-600" />
-                            </div>
-                            <span className="font-medium text-stone-700">6 people</span>
-                          </div>
-                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,140</span>
-                          <span className="text-sm text-stone-600 mb-1">pp</span>
-                        </div>
-                        <p className="text-xs text-stone-500">per person</p>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                )}
               </div>
-              
-              {/* Book Now Button */}
-              <div className="mt-10 text-center">
+
+              <div className="mt-8 text-center">
                 <motion.button
-                  className="px-8 py-4 bg-amber-600 text-white rounded-full font-medium hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-100 text-amber-800 rounded-full font-medium hover:bg-amber-200 transition-colors"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => {
-                    setSelectedSafariPackage('Great Migration Safari');
-                    setIsBookingModalOpen(true);
+                    setRequestPackageName('Student Safari Package');
+                    setIsRequestModalOpen(true);
                   }}
                 >
-                  <span>Book This Safari Now</span>
-                  <ArrowRight className="w-5 h-5" />
+                  Request Custom Itinerary <ArrowRight className="w-4 h-4" />
                 </motion.button>
-                
-                <div className="relative">
-                  <motion.button
-                    className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      setRequestPackageName('Great Migration Safari');
-                      setIsRequestModalOpen(true);
-                    }}
-                  >
-                    <span>Request Itinerary</span>
-                    <ChevronRight className="w-5 h-5" />
-                  </motion.button>
-                </div>
               </div>
             </div>
           </motion.div>
@@ -691,7 +552,7 @@ const MigrationSafari = () => {
             
             <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4">
               <motion.button
-                className="px-8 py-4 bg-white text-amber-900 rounded-full font-medium hover:bg-amber-100 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2"
+                className="px-8 py-4 bg-white text-amber-900 rounded-full font-medium hover:bg-amber-100 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {

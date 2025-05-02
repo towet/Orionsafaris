@@ -137,8 +137,8 @@ const MigrationSafari = () => {
         <div className="absolute inset-0 z-0">
           <div className="parallax" data-speed="0.3">
             <img 
-              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80" 
-              alt="Great Migration" 
+              src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80" 
+              alt="Private Luxury Safari" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -366,8 +366,8 @@ const MigrationSafari = () => {
               
               <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2"></h2>
-                  <p className="text-amber-100">Maasai Mara & Amboseli</p>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">3 Days Maasai Mara Private Safari</h2>
+                  <p className="text-amber-100">Exclusive private safari experience in Kenya's iconic Maasai Mara</p>
                 </div>
               </div>
             </motion.div>
@@ -429,7 +429,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$4,960</span>
+                          <span className="text-3xl font-bold text-amber-600">$1,380</span>
                         </div>
                         <p className="text-xs text-stone-500">total package price</p>
                       </div>
@@ -453,7 +453,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,550</span>
+                          <span className="text-3xl font-bold text-amber-600">$910</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -478,14 +478,14 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$2,860</span>
+                          <span className="text-3xl font-bold text-amber-600">$720</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
                       </div>
                     </motion.div>
                     
-                    {/* 6 people */}
+                    {/* 6-7 people */}
                     <motion.div 
                       className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                       whileHover={{ y: -5, scale: 1.02 }}
@@ -496,14 +496,14 @@ const MigrationSafari = () => {
                             <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
                               <Users className="w-4 h-4 text-amber-600" />
                             </div>
-                            <span className="font-medium text-stone-700">6 people</span>
+                            <span className="font-medium text-stone-700">6-7 people</span>
                           </div>
                           <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
                         </div>
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$2,600</span>
+                          <span className="text-3xl font-bold text-amber-600">$630</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -538,7 +538,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$5,730</span>
+                          <span className="text-3xl font-bold text-amber-600">$1,800</span>
                         </div>
                         <p className="text-xs text-stone-500">total package price</p>
                       </div>
@@ -562,7 +562,7 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$4,155</span>
+                          <span className="text-3xl font-bold text-amber-600">$1,080</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -587,14 +587,14 @@ const MigrationSafari = () => {
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,420</span>
+                          <span className="text-3xl font-bold text-amber-600">$840</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
                       </div>
                     </motion.div>
                     
-                    {/* 6 people */}
+                    {/* 6-7 people */}
                     <motion.div 
                       className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                       whileHover={{ y: -5, scale: 1.02 }}
@@ -605,14 +605,14 @@ const MigrationSafari = () => {
                             <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
                               <Users className="w-4 h-4 text-amber-600" />
                             </div>
-                            <span className="font-medium text-stone-700">6 people</span>
+                            <span className="font-medium text-stone-700">6-7 people</span>
                           </div>
                           <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
                         </div>
                       </div>
                       <div className="p-4">
                         <div className="flex items-end gap-1 mb-2">
-                          <span className="text-3xl font-bold text-amber-600">$3,140</span>
+                          <span className="text-3xl font-bold text-amber-600">$720</span>
                           <span className="text-sm text-stone-600 mb-1">pp</span>
                         </div>
                         <p className="text-xs text-stone-500">per person</p>
@@ -651,6 +651,282 @@ const MigrationSafari = () => {
                     <ChevronRight className="w-5 h-5" />
                   </motion.button>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Pricing Cards - Amboseli Safari */}
+          <motion.div
+            className="max-w-5xl mx-auto overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUpVariants}
+          >
+            {/* Header with safari name */}
+            <motion.div 
+              className="bg-gradient-to-r from-amber-800 to-amber-600 rounded-t-2xl p-8 md:p-12 relative overflow-hidden shadow-xl"
+              variants={fadeInUpVariants}
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-black/10 rounded-full -ml-10 -mb-10 blur-xl"></div>
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">3 Days Amboseli Private Safari</h2>
+                  <p className="text-amber-100">Exclusive safari with stunning views of Mt. Kilimanjaro</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Pricing Section */}
+            <div className="bg-white rounded-b-2xl shadow-xl p-8 md:p-10">
+              {/* Season Tab Selector */}
+              <div className="mb-10">
+                <h3 className="text-xl font-medium text-stone-800 mb-4">Select Season</h3>
+                
+                <div className="bg-stone-100 p-1 rounded-full flex mb-8 max-w-md mx-auto">
+                  <motion.button
+                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'low' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ y: 0 }}
+                    onClick={() => setActivePricingTab('low')}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Sunrise className="w-4 h-4" />
+                      Low Season (Jan-Jun)
+                    </span>
+                  </motion.button>
+                  
+                  <motion.button
+                    className={`relative py-2.5 px-4 rounded-full text-sm font-medium flex-1 ${activePricingTab === 'peak' ? 'bg-white text-amber-600 shadow-sm' : 'text-stone-600'}`}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ y: 0 }}
+                    onClick={() => setActivePricingTab('peak')}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Star className="w-4 h-4" />
+                      Peak Season (Jul-Dec)
+                    </span>
+                  </motion.button>
+                </div>
+                
+                {/* Low Season Pricing */}
+                {activePricingTab === 'low' && (
+                  <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                    initial={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* 1 person */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">1 person</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$1,380</span>
+                        </div>
+                        <p className="text-xs text-stone-500">total package price</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 2-3 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">2-3 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$910</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 4-5 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">4-5 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$720</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 6-7 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">6-7 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$630</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
+                
+                {/* Peak Season Pricing */}
+                {activePricingTab === 'peak' && (
+                  <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* 1 person */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">1 person</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Solo</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$1,800</span>
+                        </div>
+                        <p className="text-xs text-stone-500">total package price</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 2-3 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">2-3 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Popular</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$1,080</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 4-5 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">4-5 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Group</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$840</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* 6-7 people */}
+                    <motion.div 
+                      className="bg-white rounded-xl border border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                      whileHover={{ y: -5, scale: 1.02 }}
+                    >
+                      <div className="bg-amber-50 p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                              <Users className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="font-medium text-stone-700">6-7 people</span>
+                          </div>
+                          <div className="bg-amber-600 text-white text-xs px-2 py-1 rounded-full">Best Value</div>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-end gap-1 mb-2">
+                          <span className="text-3xl font-bold text-amber-600">$720</span>
+                          <span className="text-sm text-stone-600 mb-1">pp</span>
+                        </div>
+                        <p className="text-xs text-stone-500">per person</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
               </div>
             </div>
           </motion.div>

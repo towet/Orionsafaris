@@ -137,8 +137,8 @@ const MigrationSafari = () => {
         <div className="absolute inset-0 z-0">
           <div className="parallax" data-speed="0.3">
             <img 
-              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80" 
-              alt="Great Migration" 
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80" 
+              alt="Migration Safaris" 
               className="w-full h-full object-cover"
             />
           </div>

@@ -755,10 +755,6 @@ function App() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                     <div className="p-6">
                       <h3 className="text-xl font-serif mb-2 text-amber-400">{pkg.title}</h3>
-                      <div className="flex items-center text-amber-400">
-                        <span className="text-lg font-bold">${pkg.price}</span>
-                        <span className="text-white text-sm ml-1">/ person</span>
-                      </div>
                     </div>
                   </div>
                 </div>
