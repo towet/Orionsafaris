@@ -1110,7 +1110,7 @@ function App() {
                   </div>
                   <div>
                     <h4 className="font-medium text-stone-800 mb-1">Our Location</h4>
-                    <p className="text-stone-600">123 Safari Road, Nairobi, Kenya</p>
+                    <p className="text-stone-600">Prudential building wabera street nairobi kenya</p>
                   </div>
                 </motion.div>
                 
@@ -1124,7 +1124,7 @@ function App() {
                   </div>
                   <div>
                     <h4 className="font-medium text-stone-800 mb-1">Phone</h4>
-                    <p className="text-stone-600">+254 7468 388812</p>
+                    <p className="text-stone-600">07468388812</p>
                   </div>
                 </motion.div>
                 
@@ -1138,7 +1138,7 @@ function App() {
                   </div>
                   <div>
                     <h4 className="font-medium text-stone-800 mb-1">Email</h4>
-                    <p className="text-stone-600">frankyfreaky103@gmail.com</p>
+                    <p className="text-stone-600">bookings@orionsafaris.info</p>
                   </div>
                 </motion.div>
                 
