@@ -23,15 +23,15 @@ module.exports.handler = async (event, context) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER || 'frankyfreaky103@gmail.com',
-        pass: process.env.EMAIL_PASS || 'mkco aawp ahit wmpw' // App password
+        user: process.env.EMAIL_USER || 'orion.safarisafrica@gmail.com',
+        pass: process.env.EMAIL_PASS || 'chdt ikkb wmwo byjn' // App password
       }
     });
 
     // Setup email data
     const mailOptions = {
-      from: `"Orion Safaris Website" <${process.env.EMAIL_USER || 'frankyfreaky103@gmail.com'}>`,
-      to: process.env.EMAIL_TO || 'frankyfreaky103@gmail.com',
+      from: `"Orion Safaris Website" <${process.env.EMAIL_USER || 'orion.safarisafrica@gmail.com'}>`,
+      to: process.env.EMAIL_TO || 'orion.safarisafrica@gmail.com',
       replyTo: email,
       subject: `New Contact Form Submission: ${subject || 'No Subject'}`,
       text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject || 'No Subject'}\n\nMessage:\n${message}`,
